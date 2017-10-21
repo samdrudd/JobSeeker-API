@@ -1,10 +1,9 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-module.exports.jobSchema = Schema({
-		dateApplied : Date,
-		jobTitle : String,
+module.exports.jobSchema = mongoose.Schema({
+		date : Date,
+		title : String,
 		company : String,
 		location : String,
-		website : String 
+		via : String 
 });
