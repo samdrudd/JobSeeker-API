@@ -5,6 +5,7 @@ module.exports = function(app, db) {
 
 	app.post('/jobs', (req, res) => {
 		var job = new Job(req.body); 
+		
 		job.save((err) => {
 			if (err) {
 				console.log(err);

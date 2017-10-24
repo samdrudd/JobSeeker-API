@@ -1,9 +1,24 @@
 var mongoose = require('mongoose');
 
 module.exports.jobSchema = mongoose.Schema({
-		date : Date,
-		title : String,
-		company : String,
-		location : String,
-		via : String 
+		date: {
+			type: Date,
+			required: true
+		},
+		title: {
+			type: String,
+			required: true
+		},
+		company: {
+			type: String,
+			required: true
+		},
+		location: {
+			type: String,
+			required: true
+		},
+		via: { 
+			type: String,
+			required: true
+		}
 });
