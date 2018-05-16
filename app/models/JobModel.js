@@ -5,6 +5,10 @@ module.exports.jobSchema = mongoose.Schema({
 			type: Date,
 			required: true
 		},
+		status: {
+			type: String,
+			enum: ["applied", "interviewed", "offered", "rejected"]
+		},
 		title: {
 			type: String,
 			required: true
