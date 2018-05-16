@@ -7,7 +7,7 @@ module.exports.jobSchema = mongoose.Schema({
 		},
 		status: {
 			type: String,
-			enum: ["Applied", "Interviewed", "Offer Received", "Rejected"]
+			enum: ["applied", "interviewed", "offered", "rejected"]
 		},
 		title: {
 			type: String,
