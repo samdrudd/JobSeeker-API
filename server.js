@@ -6,7 +6,7 @@ const db		= require('./config/db');
 
 const app		= express();
 
-const port = 8000;
+const port = 8123;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
