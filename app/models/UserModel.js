@@ -3,5 +3,5 @@ var Schema = mongoose.Schema;
 
 module.exports.userSchema = Schema({
 	username : String,
-	password : String,
+	password : String
 });

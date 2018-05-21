@@ -26,15 +26,28 @@ module.exports = function(app, db) {
 				res.send(results);
 		});
 	});
-
+	
 	app.get('/users', (req, res) => {
 		User.find({}, (err, results) => {
 			if (err) {
 				console.log(err);
 				res.status(500).send({'error' : err});
 			}
-			else
+			else 
 				res.send(results);
+		});
+	});
+
+
+	app.post('/login', (req, res) => {
+		User.find({username : req.body.username, password : req.body.password}, (err, results) => {
+			if (err) {
+				console.log(err);
+				res.status(500).send({'error' : err});
+			}
+			else {
+				res.send(results);
+			}
 		});
 	
 	});
