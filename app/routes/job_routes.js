@@ -5,6 +5,7 @@ module.exports = function(app, db) {
 	
 	app.post('/jobs', (req, res) => {
 		var job = new Job(req.body); 
+		job.user_id = req.jobseeker.id;
 		
 		job.save((err) => {
 			if (err) {
