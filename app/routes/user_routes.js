@@ -40,13 +40,14 @@ module.exports = function(app, db) {
 
 
 	app.post('/login', (req, res) => {
-		User.find({username : req.body.username, password : req.body.password}, (err, results) => {
+		User.findOne({username : req.body.username, password : req.body.password}, (err, result) => {
 			if (err) {
 				console.log(err);
 				res.status(500).send({'error' : err});
 			}
 			else {
-				res.send(results);
+				req.jobseeker.id = result._id;
+				res.send(result);
 			}
 		});
 	
@@ -58,7 +59,7 @@ module.exports = function(app, db) {
 				console.log(err);
 				res.status(500).send( {'error' : err} );
 			}
-			else
+			else 
 				res.send(result);
 		});
 	});
