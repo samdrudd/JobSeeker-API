@@ -29,7 +29,7 @@ module.exports = function(app, db) {
 	});
 
 	app.get('/jobs', (req, res) => {
-		Job.find({'user_id' : req.jobseeker.id}, (err, results) => {
+		Job.find({user_id : req.jobseeker.id}, (err, results) => {
 			if (err) {
 				console.log(err);
 				res.status(500).send({"error" : err});

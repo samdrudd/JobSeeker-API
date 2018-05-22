@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 module.exports.jobSchema = mongoose.Schema({
 		user_id: {
-			type: mongoose.Schema.Types.ObjectId,
+			type: String,
 			required: true
 		},
 		date: {
