@@ -6,38 +6,20 @@ module.exports = function(app, db) {
 	app.post('/users', (req, res) => {
 		var user = new User(req.body); 
 		user.save((err) => {
-			if (err) {
-				console.log(err);
-				res.status(500).send( {'error' : err} );
+			if (err) {		
+				if (err.name === 'ValidationError')
+					res.status(400).send( {'error' : 10000} );
+				else if (err.code === 11000)
+					res.status(400).send( {'error' : err.code} );
+				else		
+					res.status(500).send( { error : err.code } );
 			}
-			else
-				res.send(user);
+			else {
+				req.jobseeker.id = user._id;
+				res.status(200).send();
+			}
 		});
 	});
-
-
-	app.get('/users/:id', (req, res) => {
-		User.findById(req.params.id, (err, results) => {
-			if (err) {
-				console.log(err);
-				res.status(500).send({'error' : err});
-			}
-			else
-				res.send(results);
-		});
-	});
-	
-	app.get('/users', (req, res) => {
-		User.find({}, (err, results) => {
-			if (err) {
-				console.log(err);
-				res.status(500).send({'error' : err});
-			}
-			else 
-				res.send(results);
-		});
-	});
-
 
 	app.post('/login', (req, res) => {
 		User.findOne({username : req.body.username, password : req.body.password}, (err, result) => {
@@ -46,11 +28,14 @@ module.exports = function(app, db) {
 				res.status(500).send({'error' : err});
 			}
 			else {
-				req.jobseeker.id = result._id;
-				res.send(result);
+				if (result) {
+					req.jobseeker.id = result._id;
+					res.status(200).send();
+				}
+				else
+					res.status(403).send();
 			}
 		});
-	
 	});
 
 	app.put('/users/:id', (req, res) => {
