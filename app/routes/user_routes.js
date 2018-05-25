@@ -46,8 +46,12 @@ module.exports = function(app, db) {
 				res.status(500).send({'error' : err});
 			}
 			else {
-				req.jobseeker.id = result._id;
-				res.send(result);
+				if (result) {
+					req.jobseeker.id = result._id;
+					res.status(200).send();
+				}
+				else
+					res.status(403).send();
 			}
 		});
 	
