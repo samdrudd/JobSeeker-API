@@ -4,7 +4,11 @@ var Schema = mongoose.Schema;
 module.exports.userSchema = Schema({
 	username : { 
 		type : String,
-		unique : true
+		unique : true,
+		required : true
 	},
-	password : String
+	password : {
+		type : String,
+		required : true
+	}
 });
