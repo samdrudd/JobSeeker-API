@@ -36,7 +36,6 @@ module.exports = function(app, db) {
 					res.status(403).send();
 			}
 		});
-	
 	});
 
 	app.put('/users/:id', (req, res) => {

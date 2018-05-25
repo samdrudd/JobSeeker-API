@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(sessions({
 	cookieName : 'jobseeker',
 	secret : '911kjd2klasjd0q2laksfmlo3ifmaoi3faiw3faowfmoaiwm3ofimw',
+	duration : 24 * 60 * 60 * 1000,
 	cookie : {
 		httpOnly : false
 	}
