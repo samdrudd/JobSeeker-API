@@ -11,7 +11,7 @@ const port 			= process.env.PORT || 5000;
 
 
 app.use(cors({
-	origin : 'http://127.0.0.1:8080',
+	origin : 'https://samdrudd.github.io/jobseeker/',
 	credentials : true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
