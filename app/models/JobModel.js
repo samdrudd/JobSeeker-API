@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
 module.exports.jobSchema = mongoose.Schema({
-		user_id: {
+		/*user_id: {
 			type: String,
 			required: true
-		},
+		},*/
 		date: {
 			type: Date,
 			required: true

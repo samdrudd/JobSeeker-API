@@ -1,8 +1,7 @@
 const express		= require('express');
 const cors  		= require('cors');
 const mongoose		= require('mongoose');
-const bodyParser	= require('body-parser');
-const sessions		= require('client-sessions');
+const bodyParser	= require('body-parser').urlencoded({ extended: true });
 const db			= require('./config/db');
 
 const app			= express();
@@ -10,20 +9,8 @@ const app			= express();
 const port 			= process.env.PORT || 5000;
 
 
-app.use(cors({
-	origin : 'https://samdrudd.github.io',
-	credentials : true
-}));
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(sessions({
-	cookieName : 'jobseeker',
-	secret : '911kjd2klasjd0q2laksfmlo3ifmaoi3faiw3faowfmoaiwm3ofimw',
-	duration : 24 * 60 * 60 * 1000,
-	cookie : {
-		httpOnly : false
-	}
-}));
+app.use(cors());
+app.use(bodyParser);
 
 var database = mongoose.createConnection(db.url);
 
